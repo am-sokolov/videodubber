@@ -1,7 +1,9 @@
 
 # Video Dubber
+The program for automatic dubbing any video file for a lot of languages.
 
-This Python script extracts the audio from a video file, transcribes it, translates it into a different language, and then generates a new audio file with the translated text.
+This Python script extracts the audio from a video file, transcribes it, 
+translates it into a different language, generates a new audio file with the translated text, and then merges it with the original video.
 
 ## Prerequisites
 
@@ -40,16 +42,33 @@ This script uses Google Cloud's Text-to-Speech and Translate APIs, which require
 
 ## Usage
 
+Run the script with the following command:
+
 ```
-python main.py <input_video_file> <target_voice> <path_to_credentials> <source_language>
+python main.py --input <path_to_video_file> --voice <target_voice> --credentials <path_to_credentials_file> --source_language <source_language>
 ```
 
-- `<input_video_file>`: Path to the source video file.
-- `<target_voice>`: Target dubbing voice name from [Google Text-to-Speech Voices](https://cloud.google.com/text-to-speech/docs/voices).
-- `<path_to_credentials>`: Path to the Google Cloud credentials JSON file.
-- `<source_language>`: Source language (e.g., "english").
+- `<path_to_video_file>`: Path to the source video file
+- `<target_voice>`: Target dubbing voice name from [Google Cloud Text-to-Speech Voices](https://cloud.google.com/text-to-speech/docs/voices). Default is "es-US-Neural2-B". Recommended voices are:
 
-The script will create a new `.wav` audio file with the same name as the input video file.
+    - English: "en-US-Neural2-J"
+    - Spanish: "es-US-Neural2-B"
+    - German: "de-DE-Neural2-D"
+    - Italian: "it-IT-Neural2-C"
+    - French: "fr-FR-Neural2-D"
+    - Russian: "ru-RU-Wavenet-D"
+    - Hindi: "hi-IN-Neural2-B"  
+But you feel free to use any other voice.
+
+- `<path_to_credentials_file>`: Path to the Google Cloud credentials JSON file
+- `<source_language>`: Source language, e.g. "english". 
+
+Now, the fully supported source languages are: English, German, French, Italian, Catalan, Chinese, Croatian, Danish, Dutch, Finnish, Greek, Japanese, Korean, Lithuanian, Macedonian, Polish, Portuguese, Romanian, Russian, Spanish, Swedish, Ukrainian.
+
+## Output
+
+The script will create a new video file with the same name as the input video file, but with "_translated" appended to the name. The new video file will have the original video with the new translated audio track.
+Additionaly, the script will create a new `.wav` audio track with the same name as the input video file contains translation only.
 
 ## Testing
 
@@ -73,8 +92,8 @@ Here are the step-by-step instructions for testing:
 
 5. Listen to the `trump_speech.wav` file to verify that the script worked correctly. The audio should be a translation of the original speech in the video.
 
-Please replace `de-DE-Neural2-B` with the desired target voice.
+Feel free to replace `de-DE-Neural2-B` with the desired target voice.
 
 ## License
 
-Alexey Sokolov (c). This project is licensed under the terms of the MIT license.
+Alexey Sokolov (c). This project is licensed under the terms of the MIT license included in this repository.
