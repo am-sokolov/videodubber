@@ -59,12 +59,12 @@ Here are the step-by-step instructions for testing:
 
 1. Download the video from the link above. 
 
-2. Save the video file in the same directory as the script.
+2. Save the video file in the same directory as the script under the name `trump_speech.mp4`.
 
 3. Run the script with the downloaded video file as the input. For example, if you saved the video as `trump_speech.mp4`, you would run:
 
    ```
-   python main.py 906_906-1044_preview.mp  de-DE-Neural2-B path_to_credentials.json  english
+   python main.py trump_speech.mp4  de-DE-Neural2-B path_to_credentials.json  english
    ```
 
    Replace `path_to_credentials.json` with the path to your Google Cloud credentials JSON file.
