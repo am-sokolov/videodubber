@@ -64,7 +64,7 @@ Here are the step-by-step instructions for testing:
 3. Run the script with the downloaded video file as the input. For example, if you saved the video as `trump_speech.mp4`, you would run:
 
    ```
-   python main.py --input trump_speech.mp4 --target_voice de-DE-Neural2-B --credentials path_to_credentials.json --source_language english
+   python main.py 906_906-1044_preview.mp  de-DE-Neural2-B path_to_credentials.json  english
    ```
 
    Replace `path_to_credentials.json` with the path to your Google Cloud credentials JSON file.
@@ -77,4 +77,4 @@ Please replace `de-DE-Neural2-B` with the desired target voice.
 
 ## License
 
-This project is licensed under the terms of the MIT license.
+Alexey Sokolov (c). This project is licensed under the terms of the MIT license.

@@ -22,6 +22,7 @@ spacy_models = {
     "italy": "it_core_news_sm"
 }
 
+
 def extract_audio_from_video(video_file):
     try:
         print("Extracting audio track")
@@ -101,6 +102,14 @@ ABBREVIATIONS = {
     "Corp.": "corporation"
 }
 
+STOP_WORDS = [
+    "APPLAUSE",
+    "APLAUSOS",
+    "BEIFALL",
+    "APPLAUDISSEMENTS",
+    "APPLAUSI"
+]
+
 
 def merge_audio_files(transcription, source_language, target_language, target_voice):
     temp_files = []
@@ -119,7 +128,8 @@ def merge_audio_files(transcription, source_language, target_language, target_vo
         for segment in tqdm(transcription["segments"]):
             for i, word in enumerate(segment["words"]):
                 word["word"] = ABBREVIATIONS.get(word["word"].strip(), word["word"])
-                if "APPLAUSE" in word["word"]:  # trick to round about the whisper model flaw (only for English)
+                if any(stop_word in word["word"] for stop_word in
+                       STOP_WORDS):  # trick to round about the whisper model flaw (only for English)
                     continue
                 if sent_start == 0:
                     sent_start = word["start"]
